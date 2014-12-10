@@ -17,7 +17,11 @@
 
 <p>
   <strong>Assignee:</strong>
-  <%= @task.assignee %>
+  <% if @task.assignee != nil %>
+  	<%= Employee.find(@task.assignee).full_name %>
+  <% else %>
+  	Unassigned
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

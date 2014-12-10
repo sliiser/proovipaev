@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign]
 
   # GET /tasks
   # GET /tasks.json
@@ -58,6 +58,15 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /tasks/1/assign
+  def assign
+    if current_employee.employee_type == "Manager"
+      @employees = Employee.all
+    else
+      @employees = Employee.where(employee_type: "Manager")
     end
   end
 

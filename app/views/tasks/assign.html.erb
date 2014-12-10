@@ -1,0 +1,12 @@
+<h1>Assign to</h1>
+
+<%= form_for(@task) do |f| %>
+
+  <% if current_employee.employee_type == "Manager" %>
+    <%= f.collection_select :assignee, @employees, :id, :full_name, include_blank: true %>
+  <% else %>
+  	<%= f.collection_select :assignee, @employees, :id, :full_name, include_blank: false %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

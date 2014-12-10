@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Id:</strong>
-  <%= @employee.id %>
-</p>
-
-<p>
   <strong>First name:</strong>
   <%= @employee.first_name %>
 </p>
@@ -16,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @employee.type %>
+  <strong>Employee type:</strong>
+  <%= @employee.employee_type %>
 </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |

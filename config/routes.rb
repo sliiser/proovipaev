@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
-  resources :employees
 
   resources :tasks
+
+  #authenticated :user do
+   #root :to => 'home#index', :as => :authenticated_root
+ # end
+  #root :to => redirect('/employees/sign_in')
+  root :to => 'home#index'
+
+  get 'tasks/:id/assign' => 'tasks#assign'
+
+  devise_for :employees, :controllers => {registrations: 'registrations'}
+  resources :employees
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
