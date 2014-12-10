@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :assignee %><br>
-    <%= f.text_field :assignee %>
+    <%= f.collection_select :assignee, Employee.all, :id, :full_name, include_blank: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
