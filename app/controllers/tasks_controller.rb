@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign, :status]
 
   # GET /tasks
   # GET /tasks.json
@@ -68,6 +68,10 @@ class TasksController < ApplicationController
     else
       @employees = Employee.where(employee_type: "Manager")
     end
+  end
+
+  # GET /tasks/1/status
+  def status
   end
 
   private

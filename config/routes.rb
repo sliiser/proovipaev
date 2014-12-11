@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root :to => 'home#index'
 
   get 'tasks/:id/assign' => 'tasks#assign'
+  get 'tasks/:id/status' => 'tasks#status'
 
   devise_for :employees, :controllers => {registrations: 'registrations'}
   resources :employees

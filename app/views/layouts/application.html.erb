@@ -9,9 +9,11 @@
 <body>
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
+
+	<%= yield %>
+
+	<br>
+	<%= link_to "Home", "/" %>
 	<%= button_to 'Sign out', destroy_employee_session_path, method: 'delete' if  employee_signed_in? %>
-
-<%= yield %>
-
 </body>
 </html>

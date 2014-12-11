@@ -1,0 +1,17 @@
+<h1>Change status</h1>
+
+<%= form_for(@task) do |f| %>
+
+	<div>
+		<%= f.radio_button(:status, "Pending") %>
+	    <%= f.label(:status_pending, "Pending") %><br>
+	    <%= f.radio_button(:status, "In Progress") %>
+	    <%= f.label(:status_in_progress, "In Progress") %><br>
+	    <% if is_manager? %>
+		    <%= f.radio_button(:status, "Closed") %>
+		    <%= f.label(:status_closed, "Closed") %>
+		<% end %>
+    </div>
+
+  <%= f.submit %>
+<% end %>
