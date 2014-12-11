@@ -11,11 +11,8 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
-    <%= f.radio_button(:employee_type, "Regular") %>
-    <%= f.label(:employee_type_regular, "Regular") %>
-    <%= f.radio_button(:employee_type, "Manager") %>
-    <%= f.label(:employee_type_manager, "Manager") %>
+  <div class="field" type="hidden">
+    <%= f.hidden_field :employee_type, :value => "Regular" %>
   </div>
 
   <div class="field">

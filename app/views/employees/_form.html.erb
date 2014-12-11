@@ -20,8 +20,10 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :employee_type %><br>
-    <%= f.text_field :employee_type %>
+    <%= f.radio_button(:employee_type, "Regular") %>
+    <%= f.label(:employee_type_regular, "Regular") %>
+    <%= f.radio_button(:employee_type, "Manager") %>
+    <%= f.label(:employee_type_manager, "Manager") %>
   </div>
   <div class="actions">
     <%= f.submit %>
