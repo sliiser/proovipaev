@@ -14,6 +14,7 @@
 
 	<br>
 	<%= link_to "Home", "/" %>
+	<%= link_to "Change password", "/employees/edit" if  employee_signed_in? %>
 	<%= button_to 'Sign out', destroy_employee_session_path, method: 'delete' if  employee_signed_in? %>
 </body>
 </html>
