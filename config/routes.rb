@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'tasks/:id/assign' => 'tasks#assign'
   get 'tasks/:id/status' => 'tasks#status'
+  get 'tasks/:id/assign_to_me' => 'tasks#assign_to_me'
 
   devise_for :employees, :controllers => {registrations: 'registrations'}
   resources :employees

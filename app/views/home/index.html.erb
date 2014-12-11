@@ -1,10 +1,10 @@
 <h1>Welcome <%= current_employee.first_name %></h1>
 
 <h2>My Tasks</h2>
-<%= render :partial => 'table', :locals => {:check_for_assignee => true} %>
+<%= render :partial => 'table', :locals => {:only_my_tasks => true} %>
 
 <h2>All Tasks</h2>
-<%= render :partial => 'table', :locals => {:check_for_assignee => false} %>
+<%= render :partial => 'table', :locals => {:only_my_tasks => false} %>
 
 
 <%= link_to "Employees", employees_path %>

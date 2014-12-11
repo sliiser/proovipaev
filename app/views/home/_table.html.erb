@@ -4,17 +4,29 @@
       <th>Name</th>
       <th>Description</th>
       <th>Status</th>
+      <% if not only_my_tasks %>
+        <th>Assignee</th>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
-      <% if not check_for_assignee or task.assignee == current_employee.id %>
+      <% if not only_my_tasks or task.assignee == current_employee.id %>
         <tr>
           <td><%= task.name %></td>
           <td><%= task.description %></td>
           <td><%= task.status %></td>
+          <% if not only_my_tasks %>
+            <td>
+              <% if task.assignee != nil %>
+                <%= Employee.find(task.assignee).full_name %>
+              <% else %>
+                Unassigned
+              <% end %>
+            </td>
+          <% end %>
           <td><%= link_to 'Show', task %></td>
           <% if is_manager? %>
             <td><%= link_to 'Edit', edit_task_path(task) %></td>
@@ -22,7 +34,11 @@
             <td><%= link_to 'Assign', assign_task_path(task) %></td>
           <% else %>
             <td><%= link_to 'Change status', change_status_path(task) %></td>
-            <td><%= link_to 'Assign to manager', assign_task_path(task) %></td>
+            <% if task.assignee == current_employee.id %>
+              <td><%= link_to 'Assign to manager', assign_task_path(task) %></td>
+            <% else %>
+              <td><%= link_to 'Assign to me', assign_to_me_path(task) %></td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>

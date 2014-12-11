@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign, :status]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign, :status, :assign_to_me]
 
   # GET /tasks
   # GET /tasks.json
@@ -72,6 +72,13 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/status
   def status
+  end
+
+  # GET /tasks/1/assign_to_me
+  def assign_to_me
+    @task.assignee = current_employee.id
+    @task.save
+    redirect_to '/'
   end
 
   private
